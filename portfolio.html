@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veda Vyas Pandula - Futuristic Portfolio</title>
+    <link rel="stylesheet" href="portfolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <svg viewBox="0 0 100 100" width="60" height="60">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                    <circle cx="50" cy="50" r="35" fill="none" stroke="#ff006e" stroke-width="2" stroke-dasharray="50"/>
+                    <circle cx="50" cy="50" r="25" fill="none" stroke="#ffd60a" stroke-width="2"/>
+                </svg>
+            </div>
+            <p class="loading-text">INITIALIZING JARVIS INTERFACE</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div id="cursor" class="custom-cursor"></div>
+    <div id="cursor-follower" class="cursor-follower"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">V</span>
+                <span class="logo-glow">EDVYA</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#hero" class="nav-link" data-section="hero">HOME</a></li>
+                <li><a href="#about" class="nav-link" data-section="about">ABOUT</a></li>
+                <li><a href="#projects" class="nav-link" data-section="projects">PROJECTS</a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact">CONTACT</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <canvas id="particleCanvas"></canvas>
+        
+        <div class="hero-background">
+            <div class="radar-scan"></div>
+            <div class="scan-line"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-left">
+                <div class="iron-man-ui">
+                    <svg id="ironManSVG" viewBox="0 0 200 300" width="200" height="300">
+                        <!-- Head -->
+                        <circle cx="100" cy="60" r="30" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                        <circle cx="100" cy="60" r="28" fill="none" stroke="#ff006e" stroke-width="1" opacity="0.3"/>
+                        
+                        <!-- Eyes -->
+                        <circle id="eyeLeft" cx="90" cy="55" r="5" fill="#ffd60a" class="eye"/>
+                        <circle id="eyeRight" cx="110" cy="55" r="5" fill="#ffd60a" class="eye"/>
+                        
+                        <!-- Mouth -->
+                        <path d="M 90 65 Q 100 70 110 65" stroke="#00d4ff" stroke-width="2" fill="none"/>
+                        
+                        <!-- Body -->
+                        <rect x="80" y="95" width="40" height="50" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                        <rect x="82" y="97" width="36" height="46" fill="none" stroke="#ff006e" stroke-width="1" opacity="0.2"/>
+                        
+                        <!-- Arc Reactor -->
+                        <circle cx="100" cy="120" r="8" fill="none" stroke="#ffd60a" stroke-width="2"/>
+                        <circle cx="100" cy="120" r="6" fill="#ffd60a" opacity="0.5"/>
+                        
+                        <!-- Arms -->
+                        <g id="armLeft">
+                            <line x1="80" y1="105" x2="50" y2="110" stroke="#00d4ff" stroke-width="2"/>
+                            <circle cx="50" cy="110" r="4" fill="#ff006e"/>
+                        </g>
+                        <g id="armRight">
+                            <line x1="120" y1="105" x2="150" y2="110" stroke="#00d4ff" stroke-width="2"/>
+                            <circle cx="150" cy="110" r="4" fill="#ff006e"/>
+                        </g>
+                        
+                        <!-- Legs -->
+                        <line x1="90" y1="145" x2="85" y2="180" stroke="#00d4ff" stroke-width="2"/>
+                        <line x1="110" y1="145" x2="115" y2="180" stroke="#00d4ff" stroke-width="2"/>
+                        <circle cx="85" cy="180" r="3" fill="#ffd60a"/>
+                        <circle cx="115" cy="180" r="3" fill="#ffd60a"/>
+                        
+                        <!-- Aura -->
+                        <circle cx="100" cy="110" r="50" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.2"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="hero-greeting">GREETINGS,</span>
+                        <span class="hero-name typing-text"></span>
+                    </h1>
+                    <p class="hero-subtitle typing-subtitle"></p>
+                    
+                    <div class="holographic-panel panel-1">
+                        <div class="panel-header">
+                            <span class="panel-title">STATUS</span>
+                            <span class="panel-dots">●●●</span>
+                        </div>
+                        <div class="panel-content">
+                            <p>AVAILABLE FOR PROJECTS</p>
+                            <div class="status-bar">
+                                <div class="status-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="holographic-panel panel-2">
+                        <div class="panel-header">
+                            <span class="panel-title">SPECIALIZATIONS</span>
+                            <span class="panel-dots">●●●</span>
+                        </div>
+                        <div class="panel-content">
+                            <div class="skill-tag">Web Development</div>
+                            <div class="skill-tag">UI/UX Design</div>
+                            <div class="skill-tag">Futuristic Design</div>
+                        </div>
+                    </div>
+
+                    <div class="cta-buttons">
+                        <a href="#contact" class="btn btn-primary">INITIATE CONTACT</a>
+                        <a href="#projects" class="btn btn-secondary">VIEW PROJECTS</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Tech Icons -->
+        <div class="floating-icons">
+            <div class="floating-icon">HTML5</div>
+            <div class="floating-icon">CSS3</div>
+            <div class="floating-icon">JavaScript</div>
+            <div class="floating-icon">React</div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-header">
+            <h2 class="section-title">ABOUT PROTOCOL</h2>
+            <div class="title-accent"></div>
+        </div>
+
+        <div class="about-container">
+            <div class="about-card about-main">
+                <div class="card-glow"></div>
+                <h3>WHO IS VEDA?</h3>
+                <p>
+                    A passionate developer combining creativity with cutting-edge technology. 
+                    Specialized in crafting immersive digital experiences with futuristic aesthetics 
+                    and robust functionality. Always exploring new technologies and pushing the boundaries 
+                    of web development.
+                </p>
+            </div>
+
+            <div class="about-stats">
+                <div class="stat-card">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="card-icon">💻</div>
+                    <h4>Development</h4>
+                    <p>Full-stack web development with modern frameworks and tools</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">🎨</div>
+                    <h4>Design</h4>
+                    <p>UI/UX design with focus on futuristic and minimalist aesthetics</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">⚡</div>
+                    <h4>Performance</h4>
+                    <p>Optimization and performance tuning for lightning-fast applications</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">🚀</div>
+                    <h4>Innovation</h4>
+                    <p>Always exploring emerging technologies and best practices</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="skills-section">
+            <h3>TECHNICAL ARSENAL</h3>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-name">Frontend</div>
+                    <div class="skill-progress">
+                        <div class="skill-bar" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Backend</div>
+                    <div class="skill-progress">
+                        <div class="skill-bar" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Design</div>
+                    <div class="skill-progress">
+                        <div class="skill-bar" style="width: 88%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Animation</div>
+                    <div class="skill-progress">
+                        <div class="skill-bar" style="width: 92%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="section-header">
+            <h2 class="section-title">PROJECT ARCHIVE</h2>
+            <div class="title-accent"></div>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="card-glow"></div>
+                <div class="project-header">
+                    <h3>AI Portfolio Generator</h3>
+                    <span class="project-status">LIVE</span>
+                </div>
+                <p>Advanced portfolio generation system using AI and machine learning algorithms. Features real-time updates and dynamic content generation.</p>
+                <div class="project-tech">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">React</span>
+                    <span class="tech-badge">AI/ML</span>
+                </div>
+                <a href="https://github.com/pandulavedavyas" target="_blank" class="project-link">VIEW PROJECT →</a>
+            </div>
+
+            <div class="project-card">
+                <div class="card-glow"></div>
+                <div class="project-header">
+                    <h3>Quantum Dashboard</h3>
+                    <span class="project-status">LIVE</span>
+                </div>
+                <p>Real-time analytics dashboard with quantum computing visualization. Features live data streaming, interactive charts, and futuristic UI elements.</p>
+                <div class="project-tech">
+                    <span class="tech-badge">JavaScript</span>
+                    <span class="tech-badge">WebGL</span>
+                    <span class="tech-badge">Node.js</span>
+                </div>
+                <a href="https://github.com/pandulavedavyas" target="_blank" class="project-link">VIEW PROJECT →</a>
+            </div>
+
+            <div class="project-card">
+                <div class="card-glow"></div>
+                <div class="project-header">
+                    <h3>Neural Network Visualizer</h3>
+                    <span class="project-status">LIVE</span>
+                </div>
+                <p>Interactive visualization of neural networks and deep learning models. Supports real-time training visualization and model exploration.</p>
+                <div class="project-tech">
+                    <span class="tech-badge">Three.js</span>
+                    <span class="tech-badge">TensorFlow</span>
+                    <span class="tech-badge">Canvas</span>
+                </div>
+                <a href="https://github.com/pandulavedavyas" target="_blank" class="project-link">VIEW PROJECT →</a>
+            </div>
+
+            <div class="project-card">
+                <div class="card-glow"></div>
+                <div class="project-header">
+                    <h3>Cyber Security Suite</h3>
+                    <span class="project-status">LIVE</span>
+                </div>
+                <p>Comprehensive cybersecurity monitoring and analysis platform with real-time threat detection and response capabilities.</p>
+                <div class="project-tech">
+                    <span class="tech-badge">Java</span>
+                    <span class="tech-badge">React</span>
+                    <span class="tech-badge">MongoDB</span>
+                </div>
+                <a href="https://github.com/pandulavedavyas" target="_blank" class="project-link">VIEW PROJECT →</a>
+            </div>
+
+            <div class="project-card">
+                <div class="card-glow"></div>
+                <div class="project-header">
+                    <h3>Holographic Interface</h3>
+                    <span class="project-status">LIVE</span>
+                </div>
+                <p>Next-gen UI framework with holographic effects and advanced glassmorphism. Fully responsive with stunning animations and interactions.</p>
+                <div class="project-tech">
+                    <span class="tech-badge">HTML/CSS</span>
+                    <span class="tech-badge">JavaScript</span>
+                    <span class="tech-badge">WebGL</span>
+                </div>
+                <a href="https://github.com/pandulavedavyas" target="_blank" class="project-link">VIEW PROJECT →</a>
+            </div>
+
+            <div class="project-card">
+                <div class="card-glow"></div>
+                <div class="project-header">
+                    <h3>Quantum Gate Simulator</h3>
+                    <span class="project-status">LIVE</span>
+                </div>
+                <p>Educational simulator for quantum computing gates and circuits. Interactive visualization of quantum states and superposition.</p>
+                <div class="project-tech">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Vue.js</span>
+                    <span class="tech-badge">WebAssembly</span>
+                </div>
+                <a href="https://github.com/pandulavedavyas" target="_blank" class="project-link">VIEW PROJECT →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="section-header">
+            <h2 class="section-title">ESTABLISH CONNECTION</h2>
+            <div class="title-accent"></div>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="info-card">
+                    <div class="info-icon">📧</div>
+                    <h4>EMAIL</h4>
+                    <a href="mailto:pandulavedavyas@gmail.com">pandulavedavyas@gmail.com</a>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">📱</div>
+                    <h4>PHONE</h4>
+                    <a href="tel:7672056985">+91 7672056985</a>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">💼</div>
+                    <h4>LINKEDIN</h4>
+                    <a href="https://www.linkedin.com/in/veda-vyas-pandula-7252a034b" target="_blank">Veda Vyas Pandula</a>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">🔗</div>
+                    <h4>GITHUB</h4>
+                    <a href="https://github.com/pandulavedavyas" target="_blank">pandulavedavyas</a>
+                </div>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <input type="text" placeholder="NAME" required class="form-input">
+                    <div class="input-glow"></div>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" placeholder="EMAIL" required class="form-input">
+                    <div class="input-glow"></div>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" placeholder="SUBJECT" required class="form-input">
+                    <div class="input-glow"></div>
+                </div>
+
+                <div class="form-group">
+                    <textarea placeholder="MESSAGE" rows="5" required class="form-input"></textarea>
+                    <div class="input-glow"></div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-submit">SEND MESSAGE</button>
+            </form>
+        </div>
+
+        <div class="social-links">
+            <h3>FOLLOW MY PROTOCOLS</h3>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/veda-vyas-pandula-7252a034b" target="_blank" class="social-icon" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/pandulavedavyas" target="_blank" class="social-icon" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:pandulavedavyas@gmail.com" class="social-icon" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="tel:7672056985" class="social-icon" title="Phone">
+                    <i class="fas fa-phone"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">© 2024 VEDA VYAS PANDULA | JARVIS PROTOCOL v1.0</p>
+            <div class="footer-accent"></div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="portfolio.js"></script>
+</body>
+</html>

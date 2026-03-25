@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JARVIS Interface | Veda Vyas Pandula</title>
+    <link rel="stylesheet" href="jarvis.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div id="loader">
+        <div class="loader-content">
+            <div class="arc-reactor-loader"></div>
+            <div class="loading-text">INITIALIZING SYSTEM... <span id="progress">0%</span></div>
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <!-- Background Elements -->
+    <canvas id="system-canvas"></canvas>
+    <div class="scanlines"></div>
+    <div class="radar-bg"></div>
+
+    <nav class="navbar glass-panel">
+        <div class="brand">J.A.R.V.I.S.</div>
+        <ul class="nav-links">
+            <li><a href="#hero" class="nav-btn">SYSTEM</a></li>
+            <li><a href="#about" class="nav-btn">IDENTITY</a></li>
+            <li><a href="#projects" class="nav-btn">ARCHIVES</a></li>
+            <li><a href="#contact" class="nav-btn">COMMUNICATION</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="screen-section">
+            <div class="holographic-panel left-panel glow-blue">
+                <div class="panel-header">SYSTEM DIAGNOSTICS</div>
+                <div class="panel-content">
+                    <p>CORE: ONLINE</p>
+                    <p>NETWORK: SECURE</p>
+                    <div class="bars">
+                        <div class="bar" style="width: 80%"></div>
+                        <div class="bar" style="width: 60%"></div>
+                        <div class="bar" style="width: 90%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="center-content">
+                <div class="iron-man-ui">
+                    <div class="helmet-placeholder">
+                        <div class="eyes">
+                            <div class="eye left-eye"></div>
+                            <div class="eye right-eye"></div>
+                        </div>
+                        <div class="tech-circle"></div>
+                    </div>
+                </div>
+                <h1 class="glitch" data-text="Veda Vyas Pandula">Veda Vyas Pandula</h1>
+                <div class="typewriter-container">
+                    <span id="typewriter"></span><span class="cursor-blink">|</span>
+                </div>
+            </div>
+
+            <div class="holographic-panel right-panel glow-red">
+                <div class="panel-header">TARGET VITALS</div>
+                <div class="panel-content">
+                    <div class="circle-graph"></div>
+                    <p>ENERGY: 98%</p>
+                    <p>SHIELDS: OPTIMAL</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="screen-section">
+            <h2 class="section-title">IDENTITY DATABANKS</h2>
+            <div class="about-grid">
+                <div class="about-card glass-panel fade-in">
+                    <div class="card-border animated-border"></div>
+                    <h3>Bio-metrics</h3>
+                    <p>Highly advanced developer with a passion for futuristic UI/UX and robust back-ends. Equipped with
+                        problem-solving algorithms and continuous learning modules.</p>
+                </div>
+                <div class="about-card glass-panel fade-in delay-1">
+                    <div class="card-border animated-border"></div>
+                    <h3>Primary Skills</h3>
+                    <ul class="skill-list">
+                        <li>HTML5 / CSS3 / JS ES6+</li>
+                        <li>React / UI Engineering</li>
+                        <li>Python / AI Integrations</li>
+                        <li>Cybernetic Animations</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="screen-section">
+            <h2 class="section-title">PROJECT ARCHIVES</h2>
+            <div class="projects-container">
+                <div class="project-card tilt-card glass-panel">
+                    <div class="card-overlay"></div>
+                    <div class="project-content">
+                        <h3>Car Price Predictor</h3>
+                        <p>AI-driven estimation model utilizing machine learning.</p>
+                        <a href="https://github.com/pandulavedavyas/Car-Price-Predictor" target="_blank"
+                            class="cyber-btn">ACCESS DB</a>
+                    </div>
+                </div>
+                <div class="project-card tilt-card glass-panel">
+                    <div class="card-overlay"></div>
+                    <div class="project-content">
+                        <h3>Voice Assistant Interface</h3>
+                        <p>Vocal command recognition and system response module.</p>
+                        <a href="https://github.com/pandulavedavyas/Voice-Assistant" target="_blank"
+                            class="cyber-btn">ACCESS DB</a>
+                    </div>
+                </div>
+                <div class="project-card tilt-card glass-panel">
+                    <div class="card-overlay"></div>
+                    <div class="project-content">
+                        <h3>Secure Network</h3>
+                        <p>Encrypted data transmission protocol prototype.</p>
+                        <a href="https://github.com/pandulavedavyas/Secure-Network" target="_blank"
+                            class="cyber-btn">ACCESS DB</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="screen-section">
+            <h2 class="section-title">SECURE COMM-LINK</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info glass-panel glow-gold fade-in">
+                    <h3>DIRECT CHANNELS</h3>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:pandulavedavyas@gmail.com">pandulavedavyas@gmail.com</a>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:7672056985">+91 7672056985</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/veda-vyas-pandula-7252a034b" target="_blank"
+                            class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/pandulavedavyas" target="_blank" class="social-btn"
+                            title="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <form class="contact-form glass-panel glow-blue fade-in delay-1">
+                    <h3>TRANSMIT MESSAGE</h3>
+                    <div class="input-group">
+                        <input type="text" id="name" required>
+                        <label for="name">SENDER ID</label>
+                        <div class="input-line"></div>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="email" required>
+                        <label for="email">RETURN FREQUENCY (EMAIL)</label>
+                        <div class="input-line"></div>
+                    </div>
+                    <div class="input-group">
+                        <textarea id="message" rows="4" required></textarea>
+                        <label for="message">ENCRYPTED PAYLOAD</label>
+                        <div class="input-line"></div>
+                    </div>
+                    <button type="submit" class="cyber-btn submit-btn">TRANSMIT <i
+                            class="fas fa-paper-plane"></i></button>
+                    <div class="form-status"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="jarvis.js"></script>
+</body>
+
+</html>
