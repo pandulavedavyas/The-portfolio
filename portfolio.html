@@ -3,433 +3,944 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veda Vyas Pandula - Futuristic Portfolio</title>
+    <title>Veda Vyas Pandula | AI Engineer Portfolio</title>
+    <meta name="description" content="AI & Data Science Student — Building Intelligent Systems and Modern Web Experiences">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="portfolio.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Loading Screen -->
     <div id="loadingScreen" class="loading-screen">
         <div class="loading-content">
             <div class="loading-logo">
-                <svg viewBox="0 0 100 100" width="60" height="60">
-                    <circle cx="50" cy="50" r="45" fill="none" stroke="#00d4ff" stroke-width="2"/>
-                    <circle cx="50" cy="50" r="35" fill="none" stroke="#ff006e" stroke-width="2" stroke-dasharray="50"/>
-                    <circle cx="50" cy="50" r="25" fill="none" stroke="#ffd60a" stroke-width="2"/>
+                <svg viewBox="0 0 120 120" width="80" height="80">
+                    <circle cx="60" cy="60" r="55" fill="none" stroke="rgba(0,212,255,0.15)" stroke-width="1.5"/>
+                    <circle cx="60" cy="60" r="55" fill="none" stroke="#00d4ff" stroke-width="2" stroke-dasharray="345.58" stroke-dashoffset="345.58" class="loading-ring-outer"/>
+                    <circle cx="60" cy="60" r="42" fill="none" stroke="rgba(255,0,110,0.15)" stroke-width="1"/>
+                    <circle cx="60" cy="60" r="42" fill="none" stroke="#ff006e" stroke-width="1.5" stroke-dasharray="263.89" stroke-dashoffset="263.89" class="loading-ring-inner"/>
+                    <circle cx="60" cy="60" r="28" fill="none" stroke="rgba(255,214,10,0.15)" stroke-width="1"/>
+                    <circle cx="60" cy="60" r="28" fill="none" stroke="#ffd60a" stroke-width="1.5" stroke-dasharray="175.93" stroke-dashoffset="175.93" class="loading-ring-core"/>
+                    <circle cx="60" cy="60" r="4" fill="#00d4ff" class="loading-dot"/>
                 </svg>
             </div>
-            <p class="loading-text">INITIALIZING JARVIS INTERFACE</p>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
+            <p class="loading-text">INITIALIZING SYSTEM</p>
+            <div class="loading-progress-track">
+                <div class="loading-progress-fill" id="loadingProgress"></div>
             </div>
+            <p class="loading-percent" id="loadingPercent">0%</p>
         </div>
     </div>
 
     <!-- Custom Cursor -->
-    <div id="cursor" class="custom-cursor"></div>
-    <div id="cursor-follower" class="cursor-follower"></div>
+    <div id="cursorDot" class="cursor-dot"></div>
+    <div id="cursorRing" class="cursor-ring"></div>
+
+    <!-- Mouse Glow -->
+    <div id="mouseGlow" class="mouse-glow"></div>
+
+    <!-- Scroll Progress -->
+    <div id="scrollProgress" class="scroll-progress"></div>
 
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav id="navbar" class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">V</span>
-                <span class="logo-glow">EDVYA</span>
+            <a href="#hero" class="nav-logo">
+                <span class="logo-bracket">&lt;</span>
+                <span class="logo-name">VEDA</span>
+                <span class="logo-bracket">/&gt;</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#hero" class="nav-link active" data-section="hero">
+                    <span class="nav-link-icon"><i class="fas fa-home"></i></span>
+                    <span class="nav-link-text">Home</span>
+                </a>
+                <a href="#about" class="nav-link" data-section="about">
+                    <span class="nav-link-icon"><i class="fas fa-user"></i></span>
+                    <span class="nav-link-text">About</span>
+                </a>
+                <a href="#tech" class="nav-link" data-section="tech">
+                    <span class="nav-link-icon"><i class="fas fa-code"></i></span>
+                    <span class="nav-link-text">Tech</span>
+                </a>
+                <a href="#projects" class="nav-link" data-section="projects">
+                    <span class="nav-link-icon"><i class="fas fa-layer-group"></i></span>
+                    <span class="nav-link-text">Projects</span>
+                </a>
+                <a href="#timeline" class="nav-link" data-section="timeline">
+                    <span class="nav-link-icon"><i class="fas fa-clock"></i></span>
+                    <span class="nav-link-text">Journey</span>
+                </a>
+                <a href="#certifications" class="nav-link" data-section="certifications">
+                    <span class="nav-link-icon"><i class="fas fa-certificate"></i></span>
+                    <span class="nav-link-text">Certs</span>
+                </a>
+                <a href="#github" class="nav-link" data-section="github">
+                    <span class="nav-link-icon"><i class="fab fa-github"></i></span>
+                    <span class="nav-link-text">GitHub</span>
+                </a>
+                <a href="#contact" class="nav-link" data-section="contact">
+                    <span class="nav-link-icon"><i class="fas fa-paper-plane"></i></span>
+                    <span class="nav-link-text">Contact</span>
+                </a>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#hero" class="nav-link" data-section="hero">HOME</a></li>
-                <li><a href="#about" class="nav-link" data-section="about">ABOUT</a></li>
-                <li><a href="#projects" class="nav-link" data-section="projects">PROJECTS</a></li>
-                <li><a href="#contact" class="nav-link" data-section="contact">CONTACT</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-right">
+                <button id="themeToggle" class="theme-toggle" title="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="hamburger" class="hamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <canvas id="particleCanvas"></canvas>
-        
-        <div class="hero-background">
-            <div class="radar-scan"></div>
-            <div class="scan-line"></div>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenu" class="mobile-menu">
+        <div class="mobile-menu-content">
+            <a href="#hero" class="mobile-link" data-section="hero">Home</a>
+            <a href="#about" class="mobile-link" data-section="about">About</a>
+            <a href="#tech" class="mobile-link" data-section="tech">Tech Stack</a>
+            <a href="#projects" class="mobile-link" data-section="projects">Projects</a>
+            <a href="#timeline" class="mobile-link" data-section="timeline">Journey</a>
+            <a href="#certifications" class="mobile-link" data-section="certifications">Certifications</a>
+            <a href="#github" class="mobile-link" data-section="github">GitHub</a>
+            <a href="#contact" class="mobile-link" data-section="contact">Contact</a>
         </div>
+    </div>
 
-        <div class="hero-content">
-            <div class="hero-left">
-                <div class="iron-man-ui">
-                    <svg id="ironManSVG" viewBox="0 0 200 300" width="200" height="300">
-                        <!-- Head -->
-                        <circle cx="100" cy="60" r="30" fill="none" stroke="#00d4ff" stroke-width="2"/>
-                        <circle cx="100" cy="60" r="28" fill="none" stroke="#ff006e" stroke-width="1" opacity="0.3"/>
-                        
-                        <!-- Eyes -->
-                        <circle id="eyeLeft" cx="90" cy="55" r="5" fill="#ffd60a" class="eye"/>
-                        <circle id="eyeRight" cx="110" cy="55" r="5" fill="#ffd60a" class="eye"/>
-                        
-                        <!-- Mouth -->
-                        <path d="M 90 65 Q 100 70 110 65" stroke="#00d4ff" stroke-width="2" fill="none"/>
-                        
-                        <!-- Body -->
-                        <rect x="80" y="95" width="40" height="50" fill="none" stroke="#00d4ff" stroke-width="2"/>
-                        <rect x="82" y="97" width="36" height="46" fill="none" stroke="#ff006e" stroke-width="1" opacity="0.2"/>
-                        
-                        <!-- Arc Reactor -->
-                        <circle cx="100" cy="120" r="8" fill="none" stroke="#ffd60a" stroke-width="2"/>
-                        <circle cx="100" cy="120" r="6" fill="#ffd60a" opacity="0.5"/>
-                        
-                        <!-- Arms -->
-                        <g id="armLeft">
-                            <line x1="80" y1="105" x2="50" y2="110" stroke="#00d4ff" stroke-width="2"/>
-                            <circle cx="50" cy="110" r="4" fill="#ff006e"/>
-                        </g>
-                        <g id="armRight">
-                            <line x1="120" y1="105" x2="150" y2="110" stroke="#00d4ff" stroke-width="2"/>
-                            <circle cx="150" cy="110" r="4" fill="#ff006e"/>
-                        </g>
-                        
-                        <!-- Legs -->
-                        <line x1="90" y1="145" x2="85" y2="180" stroke="#00d4ff" stroke-width="2"/>
-                        <line x1="110" y1="145" x2="115" y2="180" stroke="#00d4ff" stroke-width="2"/>
-                        <circle cx="85" cy="180" r="3" fill="#ffd60a"/>
-                        <circle cx="115" cy="180" r="3" fill="#ffd60a"/>
-                        
-                        <!-- Aura -->
-                        <circle cx="100" cy="110" r="50" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.2"/>
-                    </svg>
+    <main>
+        <!-- ==================== HERO SECTION ==================== -->
+        <section id="hero" class="hero">
+            <canvas id="particleCanvas" class="particle-canvas"></canvas>
+            <div class="hero-grid-bg"></div>
+            <div class="hero-glow-lines">
+                <div class="glow-line gl-1"></div>
+                <div class="glow-line gl-2"></div>
+                <div class="glow-line gl-3"></div>
+                <div class="glow-line gl-4"></div>
+            </div>
+
+            <div class="floating-tech-icons">
+                <span class="ft-icon" style="--delay:0s;--x:10%;--y:20%"><i class="fab fa-python"></i></span>
+                <span class="ft-icon" style="--delay:1.5s;--x:85%;--y:15%"><i class="fab fa-react"></i></span>
+                <span class="ft-icon" style="--delay:3s;--x:15%;--y:75%"><i class="fas fa-brain"></i></span>
+                <span class="ft-icon" style="--delay:0.8s;--x:90%;--y:65%"><i class="fas fa-database"></i></span>
+                <span class="ft-icon" style="--delay:2.2s;--x:5%;--y:45%"><i class="fab fa-js-square"></i></span>
+                <span class="ft-icon" style="--delay:4s;--x:80%;--y:85%"><i class="fab fa-html5"></i></span>
+                <span class="ft-icon" style="--delay:1s;--x:50%;--y:8%"><i class="fab fa-css3-alt"></i></span>
+                <span class="ft-icon" style="--delay:3.5s;--x:70%;--y:40%"><i class="fas fa-robot"></i></span>
+            </div>
+
+            <div class="hero-content">
+                <div class="hero-text-col">
+                    <div class="hero-badge reveal-up">
+                        <span class="badge-dot"></span>
+                        <span>Available for opportunities</span>
+                    </div>
+                    <p class="hero-greeting reveal-up">Hello, I'm</p>
+                    <h1 class="hero-name reveal-up">
+                        <span class="name-line">VEDA VYAS</span>
+                        <span class="name-line name-accent">PANDULA</span>
+                    </h1>
+                    <p class="hero-role reveal-up">AI & Data Science Student</p>
+                    <div class="hero-typing reveal-up">
+                        <span class="typing-prefix">&gt; </span>
+                        <span class="typing-text" id="typingText"></span>
+                        <span class="typing-cursor">|</span>
+                    </div>
+                    <div class="hero-tags reveal-up">
+                        <span class="hero-tag"><i class="fas fa-code"></i> Python Developer</span>
+                        <span class="hero-tag"><i class="fas fa-brain"></i> AI Enthusiast</span>
+                        <span class="hero-tag"><i class="fas fa-laptop-code"></i> Frontend Developer</span>
+                        <span class="hero-tag"><i class="fas fa-chart-line"></i> ML Learner</span>
+                    </div>
+                    <div class="hero-buttons reveal-up">
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Contact Me
+                        </a>
+                        <a href="#projects" class="btn btn-secondary">
+                            <i class="fas fa-layer-group"></i> View Projects
+                        </a>
+                        <a href="https://github.com/pandulavedavyas" target="_blank" class="btn btn-outline" rel="noopener">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/in/veda-vyas-pandula-7252a034b" target="_blank" class="btn btn-outline" rel="noopener">
+                            <i class="fab fa-linkedin-in"></i> LinkedIn
+                        </a>
+                    </div>
+                    <div class="hero-resume reveal-up">
+                        <a href="#" class="resume-link" id="downloadResume">
+                            <i class="fas fa-download"></i> Download Resume
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual-col">
+                    <div class="robot-container reveal-up">
+                        <svg id="robotSVG" viewBox="0 0 240 320" class="robot-svg">
+                            <defs>
+                                <radialGradient id="reactorGlow" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.8"/>
+                                    <stop offset="100%" stop-color="#00d4ff" stop-opacity="0"/>
+                                </radialGradient>
+                                <filter id="neonGlow">
+                                    <feGaussianBlur stdDeviation="3" result="blur"/>
+                                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                </filter>
+                            </defs>
+                            <!-- Head -->
+                            <rect x="70" y="20" width="100" height="80" rx="20" fill="none" stroke="#00d4ff" stroke-width="2" filter="url(#neonGlow)"/>
+                            <rect x="75" y="25" width="90" height="70" rx="16" fill="rgba(0,212,255,0.03)"/>
+                            <!-- Eyes -->
+                            <circle id="robotEyeL" cx="100" cy="55" r="8" fill="#00d4ff" opacity="0.9" class="robot-eye"/>
+                            <circle id="robotEyeR" cx="140" cy="55" r="8" fill="#00d4ff" opacity="0.9" class="robot-eye"/>
+                            <circle cx="100" cy="55" r="3" fill="#fff" opacity="0.8"/>
+                            <circle cx="140" cy="55" r="3" fill="#fff" opacity="0.8"/>
+                            <!-- Mouth -->
+                            <path d="M 95 72 Q 120 82 145 72" stroke="#ff006e" stroke-width="2" fill="none" opacity="0.7"/>
+                            <!-- Antenna -->
+                            <line x1="120" y1="20" x2="120" y2="5" stroke="#ffd60a" stroke-width="2"/>
+                            <circle cx="120" cy="3" r="3" fill="#ffd60a"/>
+                            <!-- Neck -->
+                            <rect x="110" y="100" width="20" height="15" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+                            <!-- Torso -->
+                            <rect x="65" y="115" width="110" height="90" rx="10" fill="none" stroke="#00d4ff" stroke-width="2" filter="url(#neonGlow)"/>
+                            <rect x="70" y="120" width="100" height="80" rx="8" fill="rgba(0,212,255,0.02)"/>
+                            <!-- Arc Reactor -->
+                            <circle cx="120" cy="155" r="18" fill="url(#reactorGlow)"/>
+                            <circle cx="120" cy="155" r="14" fill="none" stroke="#00d4ff" stroke-width="2" class="reactor-ring"/>
+                            <circle cx="120" cy="155" r="9" fill="none" stroke="#ffd60a" stroke-width="1.5" class="reactor-core"/>
+                            <circle cx="120" cy="155" r="4" fill="#ffd60a" opacity="0.8"/>
+                            <!-- Chest Lines -->
+                            <line x1="75" y1="140" x2="100" y2="155" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                            <line x1="75" y1="170" x2="100" y2="155" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                            <line x1="165" y1="140" x2="140" y2="155" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                            <line x1="165" y1="170" x2="140" y2="155" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                            <!-- Arms -->
+                            <g id="robotArmL" class="robot-arm">
+                                <rect x="30" y="120" width="35" height="18" rx="9" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+                                <circle cx="30" cy="129" r="6" fill="none" stroke="#ff006e" stroke-width="1.5"/>
+                            </g>
+                            <g id="robotArmR" class="robot-arm">
+                                <rect x="175" y="120" width="35" height="18" rx="9" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+                                <circle cx="210" cy="129" r="6" fill="none" stroke="#ff006e" stroke-width="1.5"/>
+                            </g>
+                            <!-- Hips -->
+                            <rect x="85" y="205" width="70" height="20" rx="6" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+                            <!-- Legs -->
+                            <rect x="80" y="225" width="25" height="55" rx="8" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+                            <rect x="135" y="225" width="25" height="55" rx="8" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+                            <!-- Feet -->
+                            <rect x="75" y="280" width="35" height="14" rx="7" fill="none" stroke="#ffd60a" stroke-width="1.5"/>
+                            <rect x="130" y="280" width="35" height="14" rx="7" fill="none" stroke="#ffd60a" stroke-width="1.5"/>
+                            <!-- Aura -->
+                            <circle cx="120" cy="160" r="80" fill="none" stroke="rgba(0,212,255,0.08)" stroke-width="1" class="robot-aura"/>
+                        </svg>
+                    </div>
                 </div>
             </div>
 
-            <div class="hero-right">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        <span class="hero-greeting">GREETINGS,</span>
-                        <span class="hero-name typing-text"></span>
-                    </h1>
-                    <p class="hero-subtitle typing-subtitle"></p>
-                    
-                    <div class="holographic-panel panel-1">
-                        <div class="panel-header">
-                            <span class="panel-title">STATUS</span>
-                            <span class="panel-dots">●●●</span>
+            <div class="scroll-indicator reveal-up">
+                <div class="scroll-mouse">
+                    <div class="scroll-wheel"></div>
+                </div>
+                <span>Scroll Down</span>
+            </div>
+        </section>
+
+        <!-- ==================== ABOUT SECTION ==================== -->
+        <section id="about" class="section about">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-tag">&lt;about/&gt;</span>
+                    <h2 class="section-title">About <span class="text-accent">Me</span></h2>
+                    <p class="section-subtitle">Get to know me better</p>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-card about-main reveal-left">
+                        <div class="about-card-glow"></div>
+                        <div class="about-photo-wrapper">
+                            <div class="about-photo">
+                                <div class="photo-placeholder">
+                                    <i class="fas fa-user-astronaut"></i>
+                                </div>
+                                <div class="photo-ring"></div>
+                            </div>
                         </div>
-                        <div class="panel-content">
-                            <p>AVAILABLE FOR PROJECTS</p>
-                            <div class="status-bar">
-                                <div class="status-fill"></div>
+                        <div class="about-info">
+                            <h3>Veda Vyas Pandula</h3>
+                            <p class="about-role">AI & Data Science Student</p>
+                            <p class="about-bio">
+                                A passionate developer and AI enthusiast dedicated to building intelligent systems and modern web experiences. 
+                                I combine creativity with cutting-edge technology to craft solutions that make a real impact. 
+                                Currently exploring the frontiers of Machine Learning, Computer Vision, and Generative AI while building 
+                                production-grade web applications.
+                            </p>
+                            <div class="about-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <div>
+                                        <span class="detail-label">Education</span>
+                                        <span class="detail-value">B.Tech in AI & Data Science</span>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <span class="detail-label">Location</span>
+                                        <span class="detail-value">India</span>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-bullseye"></i>
+                                    <div>
+                                        <span class="detail-label">Career Goal</span>
+                                        <span class="detail-value">AI Engineer & Full-Stack Developer</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="holographic-panel panel-2">
-                        <div class="panel-header">
-                            <span class="panel-title">SPECIALIZATIONS</span>
-                            <span class="panel-dots">●●●</span>
+                    <div class="about-stats-grid">
+                        <div class="stat-card reveal-up" data-target="12" data-suffix="+">
+                            <div class="stat-icon"><i class="fas fa-rocket"></i></div>
+                            <div class="stat-number">0+</div>
+                            <div class="stat-label">Projects Completed</div>
                         </div>
-                        <div class="panel-content">
-                            <div class="skill-tag">Web Development</div>
-                            <div class="skill-tag">UI/UX Design</div>
-                            <div class="skill-tag">Futuristic Design</div>
+                        <div class="stat-card reveal-up" data-target="6" data-suffix="+">
+                            <div class="stat-icon"><i class="fas fa-certificate"></i></div>
+                            <div class="stat-number">0+</div>
+                            <div class="stat-label">Certifications</div>
+                        </div>
+                        <div class="stat-card reveal-up" data-target="15" data-suffix="+">
+                            <div class="stat-icon"><i class="fab fa-github"></i></div>
+                            <div class="stat-number">0+</div>
+                            <div class="stat-label">GitHub Repositories</div>
+                        </div>
+                        <div class="stat-card reveal-up" data-target="18" data-suffix="+">
+                            <div class="stat-icon"><i class="fas fa-tools"></i></div>
+                            <div class="stat-number">0+</div>
+                            <div class="stat-label">Technologies Learned</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-section reveal-up">
+                    <h3 class="skills-title">Core Competencies</h3>
+                    <div class="skills-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span>Python & AI/ML</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span>Frontend Development</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span>Data Science & Analytics</span>
+                                <span>82%</span>
+                            </div>
+                            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span>Backend & Databases</span>
+                                <span>78%</span>
+                            </div>
+                            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="78"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TECH STACK SECTION ==================== -->
+        <section id="tech" class="section tech-stack">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-tag">&lt;tech-stack/&gt;</span>
+                    <h2 class="section-title">Tech <span class="text-accent">Stack</span></h2>
+                    <p class="section-subtitle">Technologies I work with</p>
+                </div>
+
+                <div class="tech-grid">
+                    <div class="tech-card reveal-up" data-tech="python">
+                        <div class="tech-card-glow"></div>
+                        <i class="fab fa-python tech-icon"></i>
+                        <span class="tech-name">Python</span>
+                    </div>
+                    <div class="tech-card reveal-up" data-tech="java">
+                        <i class="fab fa-java tech-icon"></i>
+                        <span class="tech-name">Java</span>
+                    </div>
+                    <div class="tech-card reveal-up" data-tech="sql">
+                        <i class="fas fa-database tech-icon"></i>
+                        <span class="tech-name">SQL</span>
+                    </div>
+                    <div class="tech-card reveal-up" data-tech="javascript">
+                        <i class="fab fa-js-square tech-icon"></i>
+                        <span class="tech-name">JavaScript</span>
+                    </div>
+                    <div class="tech-card reveal-up" data-tech="html">
+                        <i class="fab fa-html5 tech-icon"></i>
+                        <span class="tech-name">HTML</span>
+                    </div>
+                    <div class="tech-card reveal-up" data-tech="css">
+                        <i class="fab fa-css3-alt tech-icon"></i>
+                        <span class="tech-name">CSS</span>
+                    </div>
+                    <div class="tech-card reveal-up" data-tech="react">
+                        <i class="fab fa-react tech-icon"></i>
+                        <span class="tech-name">React</span>
+                    </div>
+                    <div class="tech-card reveal-up" data-tech="flask">
+                        <i class="fas fa-flask tech-icon"></i>
+                        <span class="tech-name">Flask</span>
+                    </div>
+                    <div class="tech-card reveal-up" data-tech="nextjs">
+                        <i class="fas fa-server tech-icon"></i>
+                        <span class="tech-name">Next.js</span>
+                    </div>
+                    <div class="tech-card reveal-up" data-tech="ml">
+                        <i class="fas fa-brain tech-icon"></i>
+                        <span class="tech-name">Machine Learning</span>
+                    </div>
+                    <div class="tech-card reveal-up" data-tech="opencv">
+                        <i class="fas fa-eye tech-icon"></i>
+                        <span class="tech-name">OpenCV</span>
+                    </div>
+                    <div class="tech-card reveal-up" data-tech="esp32">
+                        <i class="fas fa-microchip tech-icon"></i>
+                        <span class="tech-name">ESP32</span>
+                    </div>
+                    <div class="tech-card reveal-up" data-tech="git">
+                        <i class="fab fa-git-alt tech-icon"></i>
+                        <span class="tech-name">Git</span>
+                    </div>
+                    <div class="tech-card reveal-up" data-tech="github">
+                        <i class="fab fa-github tech-icon"></i>
+                        <span class="tech-name">GitHub</span>
+                    </div>
+                    <div class="tech-card reveal-up" data-tech="vscode">
+                        <i class="fas fa-code tech-icon"></i>
+                        <span class="tech-name">VS Code</span>
+                    </div>
+                    <div class="tech-card reveal-up" data-tech="tensorflow">
+                        <i class="fas fa-cogs tech-icon"></i>
+                        <span class="tech-name">TensorFlow</span>
+                    </div>
+                    <div class="tech-card reveal-up" data-tech="pandas">
+                        <i class="fas fa-table tech-icon"></i>
+                        <span class="tech-name">Pandas</span>
+                    </div>
+                    <div class="tech-card reveal-up" data-tech="numpy">
+                        <i class="fas fa-calculator tech-icon"></i>
+                        <span class="tech-name">NumPy</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PROJECTS SECTION ==================== -->
+        <section id="projects" class="section projects">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-tag">&lt;projects/&gt;</span>
+                    <h2 class="section-title">Featured <span class="text-accent">Projects</span></h2>
+                    <p class="section-subtitle">Some of my recent work</p>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1: AI Chatbot -->
+                    <div class="project-card reveal-up" data-project="chatbot">
+                        <div class="project-card-glow"></div>
+                        <div class="project-card-header">
+                            <div class="project-icon-badge">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="project-status-badge live">LIVE</div>
+                        </div>
+                        <h3 class="project-title">AI Chatbot Assistant</h3>
+                        <p class="project-desc">A conversational AI assistant built using Python, Flask, and the Gemini API. Provides intelligent responses through a modern chat interface with generative AI integration.</p>
+                        <div class="project-features-preview">
+                            <span><i class="fas fa-check"></i> Real-time AI responses</span>
+                            <span><i class="fas fa-check"></i> Chat history</span>
+                            <span><i class="fas fa-check"></i> Responsive UI</span>
+                            <span><i class="fas fa-check"></i> Secure API integration</span>
+                        </div>
+                        <div class="project-tech-tags">
+                            <span>Python</span>
+                            <span>Flask</span>
+                            <span>Gemini API</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="project-buttons">
+                            <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/pandulavedavyas" target="_blank" class="btn btn-sm btn-outline" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+                            <button class="btn btn-sm btn-secondary project-details-btn" data-project="chatbot"><i class="fas fa-info-circle"></i> View Details</button>
                         </div>
                     </div>
 
-                    <div class="cta-buttons">
-                        <a href="#contact" class="btn btn-primary">INITIATE CONTACT</a>
-                        <a href="#projects" class="btn btn-secondary">VIEW PROJECTS</a>
+                    <!-- Project 2: Expense Tracker -->
+                    <div class="project-card reveal-up" data-project="expense">
+                        <div class="project-card-glow"></div>
+                        <div class="project-card-header">
+                            <div class="project-icon-badge expense">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <div class="project-status-badge live">LIVE</div>
+                        </div>
+                        <h3 class="project-title">Expense Tracker Dashboard</h3>
+                        <p class="project-desc">A professional expense management dashboard helping users monitor income, expenses, savings, and financial insights through interactive analytics and charts.</p>
+                        <div class="project-features-preview">
+                            <span><i class="fas fa-check"></i> Income & Expense Tracking</span>
+                            <span><i class="fas fa-check"></i> Analytics Dashboard</span>
+                            <span><i class="fas fa-check"></i> Charts & Reports</span>
+                            <span><i class="fas fa-check"></i> Authentication</span>
+                        </div>
+                        <div class="project-tech-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>Chart.js</span>
+                            <span>Local Storage</span>
+                        </div>
+                        <div class="project-buttons">
+                            <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/pandulavedavyas" target="_blank" class="btn btn-sm btn-outline" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+                            <button class="btn btn-sm btn-secondary project-details-btn" data-project="expense"><i class="fas fa-info-circle"></i> View Details</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Floating Tech Icons -->
-        <div class="floating-icons">
-            <div class="floating-icon">HTML5</div>
-            <div class="floating-icon">CSS3</div>
-            <div class="floating-icon">JavaScript</div>
-            <div class="floating-icon">React</div>
-        </div>
-    </section>
+        <!-- ==================== PROJECT SHOWCASE ==================== -->
+        <section id="showcase" class="section showcase">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-tag">&lt;showcase/&gt;</span>
+                    <h2 class="section-title">Project <span class="text-accent">Showcase</span></h2>
+                    <p class="section-subtitle">Explore my development journey</p>
+                </div>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="section-header">
-            <h2 class="section-title">ABOUT PROTOCOL</h2>
-            <div class="title-accent"></div>
-        </div>
-
-        <div class="about-container">
-            <div class="about-card about-main">
-                <div class="card-glow"></div>
-                <h3>WHO IS VEDA?</h3>
-                <p>
-                    A passionate developer combining creativity with cutting-edge technology. 
-                    Specialized in crafting immersive digital experiences with futuristic aesthetics 
-                    and robust functionality. Always exploring new technologies and pushing the boundaries 
-                    of web development.
-                </p>
-            </div>
-
-            <div class="about-stats">
-                <div class="stat-card">
-                    <div class="stat-number">5+</div>
-                    <div class="stat-label">Years Experience</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">Projects Completed</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Client Satisfaction</div>
-                </div>
-            </div>
-
-            <div class="about-grid">
-                <div class="about-card">
-                    <div class="card-icon">💻</div>
-                    <h4>Development</h4>
-                    <p>Full-stack web development with modern frameworks and tools</p>
-                </div>
-                <div class="about-card">
-                    <div class="card-icon">🎨</div>
-                    <h4>Design</h4>
-                    <p>UI/UX design with focus on futuristic and minimalist aesthetics</p>
-                </div>
-                <div class="about-card">
-                    <div class="card-icon">⚡</div>
-                    <h4>Performance</h4>
-                    <p>Optimization and performance tuning for lightning-fast applications</p>
-                </div>
-                <div class="about-card">
-                    <div class="card-icon">🚀</div>
-                    <h4>Innovation</h4>
-                    <p>Always exploring emerging technologies and best practices</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="skills-section">
-            <h3>TECHNICAL ARSENAL</h3>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <div class="skill-name">Frontend</div>
-                    <div class="skill-progress">
-                        <div class="skill-bar" style="width: 90%;"></div>
+                <div class="showcase-grid">
+                    <div class="showcase-card reveal-up">
+                        <div class="showcase-icon"><i class="fas fa-book-open"></i></div>
+                        <h4>Documentation</h4>
+                        <p>Complete project documentation with architecture diagrams and code explanations.</p>
                     </div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">Backend</div>
-                    <div class="skill-progress">
-                        <div class="skill-bar" style="width: 85%;"></div>
+                    <div class="showcase-card reveal-up">
+                        <div class="showcase-icon"><i class="fas fa-play-circle"></i></div>
+                        <h4>Demo Videos</h4>
+                        <p>Watch walkthrough demos of each project in action with live commentary.</p>
                     </div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">Design</div>
-                    <div class="skill-progress">
-                        <div class="skill-bar" style="width: 88%;"></div>
+                    <div class="showcase-card reveal-up">
+                        <div class="showcase-icon"><i class="fas fa-images"></i></div>
+                        <h4>Screenshots</h4>
+                        <p>Browse through detailed screenshots of every feature and interface.</p>
                     </div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">Animation</div>
-                    <div class="skill-progress">
-                        <div class="skill-bar" style="width: 92%;"></div>
+                    <div class="showcase-card reveal-up">
+                        <div class="showcase-icon"><i class="fas fa-road"></i></div>
+                        <h4>Dev Journey</h4>
+                        <p>Read about the challenges, decisions, and learnings throughout development.</p>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- ==================== EXPERIENCE TIMELINE ==================== -->
+        <section id="timeline" class="section timeline-section">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-tag">&lt;journey/&gt;</span>
+                    <h2 class="section-title">My <span class="text-accent">Journey</span></h2>
+                    <p class="section-subtitle">Education, certifications, and milestones</p>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-line"></div>
+
+                    <div class="timeline-item left reveal-left">
+                        <div class="timeline-dot"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">2022 - Present</div>
+                            <h4>B.Tech in AI & Data Science</h4>
+                            <p>Pursuing degree with focus on Machine Learning, Deep Learning, NLP, and Computer Vision.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item right reveal-right">
+                        <div class="timeline-dot"><i class="fas fa-certificate"></i></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">2024</div>
+                            <h4>IBM SkillsBuild Certification</h4>
+                            <p>Completed AI and Cloud Computing courses through IBM's professional development program.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item left reveal-left">
+                        <div class="timeline-dot"><i class="fas fa-award"></i></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">2024</div>
+                            <h4>EY AI Skills Certification</h4>
+                            <p>Earned certification in Artificial Intelligence foundations and applications from Ernst & Young.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item right reveal-right">
+                        <div class="timeline-dot"><i class="fas fa-robot"></i></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">2024</div>
+                            <h4>AI Chatbot Assistant</h4>
+                            <p>Built a full-stack AI chatbot using Flask and Gemini API with real-time conversational capabilities.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item left reveal-left">
+                        <div class="timeline-dot"><i class="fas fa-chart-line"></i></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">2024</div>
+                            <h4>Expense Tracker Dashboard</h4>
+                            <p>Developed a comprehensive financial dashboard with interactive charts and analytics.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item right reveal-right">
+                        <div class="timeline-dot"><i class="fas fa-trophy"></i></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">2024</div>
+                            <h4>Google AI Certification</h4>
+                            <p>Completed Google's Introduction to Generative AI and Machine Learning courses.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item left reveal-left">
+                        <div class="timeline-dot"><i class="fas fa-laptop-code"></i></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">2023</div>
+                            <h4>Microsoft Learn Achievement</h4>
+                            <p>Earned multiple badges in Python, Data Analysis, and AI fundamentals through Microsoft Learn.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item right reveal-right">
+                        <div class="timeline-dot"><i class="fas fa-lightbulb"></i></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">2023</div>
+                            <h4>Started AI & ML Journey</h4>
+                            <p>Began exploring machine learning algorithms, neural networks, and data science methodologies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== CERTIFICATIONS SECTION ==================== -->
+        <section id="certifications" class="section certifications">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-tag">&lt;certifications/&gt;</span>
+                    <h2 class="section-title">Certifications & <span class="text-accent">Achievements</span></h2>
+                    <p class="section-subtitle">Validated skills and recognitions</p>
+                </div>
+
+                <div class="cert-grid">
+                    <div class="cert-card reveal-up">
+                        <div class="cert-card-glow"></div>
+                        <div class="cert-icon ibm"><i class="fas fa-building"></i></div>
+                        <h4>IBM SkillsBuild</h4>
+                        <p>AI & Cloud Computing</p>
+                        <span class="cert-year">2024</span>
+                        <a href="#" class="btn btn-sm btn-outline cert-verify" target="_blank" rel="noopener">
+                            <i class="fas fa-external-link-alt"></i> Verify Certificate
+                        </a>
+                    </div>
+                    <div class="cert-card reveal-up">
+                        <div class="cert-card-glow"></div>
+                        <div class="cert-icon ey"><i class="fas fa-chart-bar"></i></div>
+                        <h4>EY AI Skills</h4>
+                        <p>Artificial Intelligence Foundations</p>
+                        <span class="cert-year">2024</span>
+                        <a href="#" class="btn btn-sm btn-outline cert-verify" target="_blank" rel="noopener">
+                            <i class="fas fa-external-link-alt"></i> Verify Certificate
+                        </a>
+                    </div>
+                    <div class="cert-card reveal-up">
+                        <div class="cert-card-glow"></div>
+                        <div class="cert-icon google"><i class="fab fa-google"></i></div>
+                        <h4>Google AI</h4>
+                        <p>Intro to Generative AI</p>
+                        <span class="cert-year">2024</span>
+                        <a href="#" class="btn btn-sm btn-outline cert-verify" target="_blank" rel="noopener">
+                            <i class="fas fa-external-link-alt"></i> Verify Certificate
+                        </a>
+                    </div>
+                    <div class="cert-card reveal-up">
+                        <div class="cert-card-glow"></div>
+                        <div class="cert-icon microsoft"><i class="fab fa-microsoft"></i></div>
+                        <h4>Microsoft Learn</h4>
+                        <p>Python & Data Analysis</p>
+                        <span class="cert-year">2023</span>
+                        <a href="#" class="btn btn-sm btn-outline cert-verify" target="_blank" rel="noopener">
+                            <i class="fas fa-external-link-alt"></i> Verify Certificate
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Achievement Counters -->
+                <div class="achievements-section reveal-up">
+                    <h3 class="achievements-title">Achievements</h3>
+                    <div class="achievements-grid">
+                        <div class="achievement-item" data-target="12">
+                            <div class="achievement-number">0</div>
+                            <div class="achievement-label">Projects</div>
+                        </div>
+                        <div class="achievement-item" data-target="200">
+                            <div class="achievement-number">0</div>
+                            <div class="achievement-label">GitHub Contributions</div>
+                        </div>
+                        <div class="achievement-item" data-target="6">
+                            <div class="achievement-number">0</div>
+                            <div class="achievement-label">Certificates</div>
+                        </div>
+                        <div class="achievement-item" data-target="1500">
+                            <div class="achievement-number">0</div>
+                            <div class="achievement-label">Coding Hours</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== GITHUB SECTION ==================== -->
+        <section id="github" class="section github-section">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-tag">&lt;github/&gt;</span>
+                    <h2 class="section-title">GitHub <span class="text-accent">Profile</span></h2>
+                    <p class="section-subtitle">My open source contributions</p>
+                </div>
+
+                <div class="github-content">
+                    <div class="github-card profile-card reveal-left">
+                        <div class="github-avatar">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <h4>@pandulavedavyas</h4>
+                        <p class="github-bio">AI & Data Science Student | Building Intelligent Systems</p>
+                        <a href="https://github.com/pandulavedavyas" target="_blank" class="btn btn-primary btn-sm" rel="noopener">
+                            <i class="fab fa-github"></i> View Profile
+                        </a>
+                    </div>
+
+                    <div class="github-card stats-card reveal-up">
+                        <h4>GitHub Stats</h4>
+                        <div class="github-stats-grid">
+                            <div class="gh-stat">
+                                <span class="gh-stat-num">15+</span>
+                                <span class="gh-stat-label">Repositories</span>
+                            </div>
+                            <div class="gh-stat">
+                                <span class="gh-stat-num">200+</span>
+                                <span class="gh-stat-label">Contributions</span>
+                            </div>
+                            <div class="gh-stat">
+                                <span class="gh-stat-num">5+</span>
+                                <span class="gh-stat-label">Stars</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="github-card languages-card reveal-right">
+                        <h4>Languages Used</h4>
+                        <div class="lang-list">
+                            <div class="lang-item">
+                                <span class="lang-dot" style="background:#3572A5"></span>
+                                <span class="lang-name">Python</span>
+                                <div class="lang-bar"><div class="lang-fill" style="width:45%"></div></div>
+                                <span class="lang-pct">45%</span>
+                            </div>
+                            <div class="lang-item">
+                                <span class="lang-dot" style="background:#f1e05a"></span>
+                                <span class="lang-name">JavaScript</span>
+                                <div class="lang-bar"><div class="lang-fill" style="width:25%"></div></div>
+                                <span class="lang-pct">25%</span>
+                            </div>
+                            <div class="lang-item">
+                                <span class="lang-dot" style="background:#e34c26"></span>
+                                <span class="lang-name">HTML</span>
+                                <div class="lang-bar"><div class="lang-fill" style="width:15%"></div></div>
+                                <span class="lang-pct">15%</span>
+                            </div>
+                            <div class="lang-item">
+                                <span class="lang-dot" style="background:#563d7c"></span>
+                                <span class="lang-name">CSS</span>
+                                <div class="lang-bar"><div class="lang-fill" style="width:10%"></div></div>
+                                <span class="lang-pct">10%</span>
+                            </div>
+                            <div class="lang-item">
+                                <span class="lang-dot" style="background:#b07219"></span>
+                                <span class="lang-name">Java</span>
+                                <div class="lang-bar"><div class="lang-fill" style="width:5%"></div></div>
+                                <span class="lang-pct">5%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="github-card repos-card reveal-up">
+                        <h4>Pinned Repositories</h4>
+                        <div class="pinned-repos">
+                            <a href="https://github.com/pandulavedavyas" target="_blank" class="pinned-repo" rel="noopener">
+                                <i class="fas fa-robot"></i>
+                                <span>AI-Chatbot-Assistant</span>
+                                <small>Python &bull; Flask &bull; Gemini API</small>
+                            </a>
+                            <a href="https://github.com/pandulavedavyas" target="_blank" class="pinned-repo" rel="noopener">
+                                <i class="fas fa-chart-pie"></i>
+                                <span>Expense-Tracker</span>
+                                <small>HTML &bull; CSS &bull; JavaScript</small>
+                            </a>
+                            <a href="https://github.com/pandulavedavyas" target="_blank" class="pinned-repo" rel="noopener">
+                                <i class="fas fa-car"></i>
+                                <span>Car-Price-Predictor</span>
+                                <small>Python &bull; ML &bull; Pandas</small>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== CONTACT SECTION ==================== -->
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-tag">&lt;contact/&gt;</span>
+                    <h2 class="section-title">Get In <span class="text-accent">Touch</span></h2>
+                    <p class="section-subtitle">Let's build something amazing together</p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-info-col reveal-left">
+                        <div class="contact-info-card">
+                            <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <h4>Email</h4>
+                                <a href="mailto:pandulavedavyas@gmail.com">pandulavedavyas@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-info-card">
+                            <div class="contact-info-icon"><i class="fab fa-linkedin-in"></i></div>
+                            <div>
+                                <h4>LinkedIn</h4>
+                                <a href="https://www.linkedin.com/in/veda-vyas-pandula-7252a034b" target="_blank" rel="noopener">Veda Vyas Pandula</a>
+                            </div>
+                        </div>
+                        <div class="contact-info-card">
+                            <div class="contact-info-icon"><i class="fab fa-github"></i></div>
+                            <div>
+                                <h4>GitHub</h4>
+                                <a href="https://github.com/pandulavedavyas" target="_blank" rel="noopener">@pandulavedavyas</a>
+                            </div>
+                        </div>
+                        <div class="contact-info-card">
+                            <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <h4>Location</h4>
+                                <span>India</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="contact-form reveal-right" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contactName">Name</label>
+                                <input type="text" id="contactName" placeholder="Your name" required>
+                                <div class="input-line"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactEmail">Email</label>
+                                <input type="email" id="contactEmail" placeholder="your@email.com" required>
+                                <div class="input-line"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactSubject">Subject</label>
+                            <input type="text" id="contactSubject" placeholder="Project inquiry" required>
+                            <div class="input-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage">Message</label>
+                            <textarea id="contactMessage" rows="5" placeholder="Tell me about your project..." required></textarea>
+                            <div class="input-line"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== PROJECT DETAIL MODAL ==================== -->
+    <div id="projectModal" class="project-modal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content" id="modalContent">
+            <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content inserted by JS -->
+            </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="section-header">
-            <h2 class="section-title">PROJECT ARCHIVE</h2>
-            <div class="title-accent"></div>
-        </div>
-
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="card-glow"></div>
-                <div class="project-header">
-                    <h3>AI Portfolio Generator</h3>
-                    <span class="project-status">LIVE</span>
-                </div>
-                <p>Advanced portfolio generation system using AI and machine learning algorithms. Features real-time updates and dynamic content generation.</p>
-                <div class="project-tech">
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">React</span>
-                    <span class="tech-badge">AI/ML</span>
-                </div>
-                <a href="https://github.com/pandulavedavyas" target="_blank" class="project-link">VIEW PROJECT →</a>
+    <!-- ==================== AI ASSISTANT BUTTON ==================== -->
+    <div id="aiAssistant" class="ai-assistant">
+        <button class="ai-btn" id="aiBtn" title="AI Assistant">
+            <i class="fas fa-robot"></i>
+        </button>
+        <div class="ai-chatbox" id="aiChatbox">
+            <div class="ai-chat-header">
+                <span><i class="fas fa-robot"></i> VEDA AI</span>
+                <button class="ai-chat-close" id="aiChatClose"><i class="fas fa-times"></i></button>
             </div>
-
-            <div class="project-card">
-                <div class="card-glow"></div>
-                <div class="project-header">
-                    <h3>Quantum Dashboard</h3>
-                    <span class="project-status">LIVE</span>
+            <div class="ai-chat-messages" id="aiChatMessages">
+                <div class="ai-msg bot">
+                    <p>Hi! I'm VEDA's AI assistant. How can I help you today?</p>
                 </div>
-                <p>Real-time analytics dashboard with quantum computing visualization. Features live data streaming, interactive charts, and futuristic UI elements.</p>
-                <div class="project-tech">
-                    <span class="tech-badge">JavaScript</span>
-                    <span class="tech-badge">WebGL</span>
-                    <span class="tech-badge">Node.js</span>
-                </div>
-                <a href="https://github.com/pandulavedavyas" target="_blank" class="project-link">VIEW PROJECT →</a>
             </div>
-
-            <div class="project-card">
-                <div class="card-glow"></div>
-                <div class="project-header">
-                    <h3>Neural Network Visualizer</h3>
-                    <span class="project-status">LIVE</span>
-                </div>
-                <p>Interactive visualization of neural networks and deep learning models. Supports real-time training visualization and model exploration.</p>
-                <div class="project-tech">
-                    <span class="tech-badge">Three.js</span>
-                    <span class="tech-badge">TensorFlow</span>
-                    <span class="tech-badge">Canvas</span>
-                </div>
-                <a href="https://github.com/pandulavedavyas" target="_blank" class="project-link">VIEW PROJECT →</a>
-            </div>
-
-            <div class="project-card">
-                <div class="card-glow"></div>
-                <div class="project-header">
-                    <h3>Cyber Security Suite</h3>
-                    <span class="project-status">LIVE</span>
-                </div>
-                <p>Comprehensive cybersecurity monitoring and analysis platform with real-time threat detection and response capabilities.</p>
-                <div class="project-tech">
-                    <span class="tech-badge">Java</span>
-                    <span class="tech-badge">React</span>
-                    <span class="tech-badge">MongoDB</span>
-                </div>
-                <a href="https://github.com/pandulavedavyas" target="_blank" class="project-link">VIEW PROJECT →</a>
-            </div>
-
-            <div class="project-card">
-                <div class="card-glow"></div>
-                <div class="project-header">
-                    <h3>Holographic Interface</h3>
-                    <span class="project-status">LIVE</span>
-                </div>
-                <p>Next-gen UI framework with holographic effects and advanced glassmorphism. Fully responsive with stunning animations and interactions.</p>
-                <div class="project-tech">
-                    <span class="tech-badge">HTML/CSS</span>
-                    <span class="tech-badge">JavaScript</span>
-                    <span class="tech-badge">WebGL</span>
-                </div>
-                <a href="https://github.com/pandulavedavyas" target="_blank" class="project-link">VIEW PROJECT →</a>
-            </div>
-
-            <div class="project-card">
-                <div class="card-glow"></div>
-                <div class="project-header">
-                    <h3>Quantum Gate Simulator</h3>
-                    <span class="project-status">LIVE</span>
-                </div>
-                <p>Educational simulator for quantum computing gates and circuits. Interactive visualization of quantum states and superposition.</p>
-                <div class="project-tech">
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">Vue.js</span>
-                    <span class="tech-badge">WebAssembly</span>
-                </div>
-                <a href="https://github.com/pandulavedavyas" target="_blank" class="project-link">VIEW PROJECT →</a>
+            <div class="ai-chat-input">
+                <input type="text" id="aiInput" placeholder="Ask me something...">
+                <button id="aiSend"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="section-header">
-            <h2 class="section-title">ESTABLISH CONNECTION</h2>
-            <div class="title-accent"></div>
-        </div>
+    <!-- Back to Top -->
+    <button id="backToTop" class="back-to-top" title="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
-        <div class="contact-container">
-            <div class="contact-info">
-                <div class="info-card">
-                    <div class="info-icon">📧</div>
-                    <h4>EMAIL</h4>
-                    <a href="mailto:pandulavedavyas@gmail.com">pandulavedavyas@gmail.com</a>
-                </div>
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
 
-                <div class="info-card">
-                    <div class="info-icon">📱</div>
-                    <h4>PHONE</h4>
-                    <a href="tel:7672056985">+91 7672056985</a>
-                </div>
-
-                <div class="info-card">
-                    <div class="info-icon">💼</div>
-                    <h4>LINKEDIN</h4>
-                    <a href="https://www.linkedin.com/in/veda-vyas-pandula-7252a034b" target="_blank">Veda Vyas Pandula</a>
-                </div>
-
-                <div class="info-card">
-                    <div class="info-icon">🔗</div>
-                    <h4>GITHUB</h4>
-                    <a href="https://github.com/pandulavedavyas" target="_blank">pandulavedavyas</a>
-                </div>
-            </div>
-
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <input type="text" placeholder="NAME" required class="form-input">
-                    <div class="input-glow"></div>
-                </div>
-
-                <div class="form-group">
-                    <input type="email" placeholder="EMAIL" required class="form-input">
-                    <div class="input-glow"></div>
-                </div>
-
-                <div class="form-group">
-                    <input type="text" placeholder="SUBJECT" required class="form-input">
-                    <div class="input-glow"></div>
-                </div>
-
-                <div class="form-group">
-                    <textarea placeholder="MESSAGE" rows="5" required class="form-input"></textarea>
-                    <div class="input-glow"></div>
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-submit">SEND MESSAGE</button>
-            </form>
-        </div>
-
-        <div class="social-links">
-            <h3>FOLLOW MY PROTOCOLS</h3>
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/veda-vyas-pandula-7252a034b" target="_blank" class="social-icon" title="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/pandulavedavyas" target="_blank" class="social-icon" title="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="mailto:pandulavedavyas@gmail.com" class="social-icon" title="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                <a href="tel:7672056985" class="social-icon" title="Phone">
-                    <i class="fas fa-phone"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p class="footer-text">© 2024 VEDA VYAS PANDULA | JARVIS PROTOCOL v1.0</p>
-            <div class="footer-accent"></div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script type="module" src="portfolio.js"></script>
+    <script src="portfolio.js"></script>
 </body>
 </html>
