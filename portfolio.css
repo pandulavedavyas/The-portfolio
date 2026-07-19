@@ -105,6 +105,16 @@ input, textarea { font-family: inherit; }
     pointer-events: none;
 }
 
+/* CSS fallback: force-hide after 3s even if JS fails */
+@keyframes forceHideLoader {
+    0%, 99% { opacity: 1; visibility: visible; }
+    100% { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+.loading-screen {
+    animation: forceHideLoader 3s 0.5s forwards;
+}
+
 .loading-content { text-align: center; }
 
 .loading-logo {

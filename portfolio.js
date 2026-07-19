@@ -3,6 +3,15 @@
    Premium AI Engineer Portfolio - Full Interactivity
    ================================================================ */
 
+// Emergency loader dismiss - runs immediately, no dependencies
+(function(){
+    setTimeout(function(){
+        var ls = document.getElementById('loadingScreen');
+        if(ls) { ls.style.opacity='0'; ls.style.visibility='hidden'; ls.style.pointerEvents='none'; }
+        document.body.style.overflow='';
+    }, 3000);
+})();
+
 (function () {
     'use strict';
 
