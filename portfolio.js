@@ -43,19 +43,24 @@
     /* ======================== LOADING SCREEN ======================== */
     let loadProgress = 0;
     const loadInterval = setInterval(() => {
-        loadProgress += Math.random() * 12 + 3;
+        loadProgress += Math.random() * 20 + 8;
         if (loadProgress >= 100) {
             loadProgress = 100;
             clearInterval(loadInterval);
-            setTimeout(() => {
-                loadingScreen.classList.add('hidden');
-                document.body.style.overflow = '';
-                initRevealAnimations();
-            }, 400);
+            setTimeout(dismissLoader, 200);
         }
-        loadingProgress.style.width = loadProgress + '%';
-        loadingPercent.textContent = Math.floor(loadProgress) + '%';
-    }, 120);
+        if (loadingProgress) loadingProgress.style.width = loadProgress + '%';
+        if (loadingPercent) loadingPercent.textContent = Math.floor(loadProgress) + '%';
+    }, 80);
+
+    function dismissLoader() {
+        if (loadingScreen) loadingScreen.classList.add('hidden');
+        document.body.style.overflow = '';
+        initRevealAnimations();
+    }
+
+    // Safety: force-dismiss after 2.5s no matter what
+    setTimeout(dismissLoader, 2500);
 
     document.body.style.overflow = 'hidden';
 
